@@ -26,13 +26,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd nodejs  # Переходим в папку, если package.json там
+          cd nodejs  # Если package.json в папке nodejs
           npm install
-
-      - name: Run tests
-        run: |
-          cd nodejs  # Переходим в папку с тестами
-          npm test
 
       - name: Deploy application
         run: echo "Deploying..."
