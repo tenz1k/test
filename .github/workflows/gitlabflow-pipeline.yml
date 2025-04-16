@@ -3,6 +3,17 @@ name: Node.js GitLab Flow Pipeline
 on:
   push:
     branches:
+<<<<<<< HEAD
+      - develop
+      - feature/*
+      - hotfix/*
+      - main
+
+  pull_request:
+    branches:
+      - develop
+      - main
+=======
       - main
       - feature/*
       - hotfix/*
@@ -10,12 +21,35 @@ on:
     branches:
       - main
       - develop
+>>>>>>> 1e291ba61d31047d17b48d277d46a259bec06ccd
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+<<<<<<< HEAD
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - name: Build application
+      run: npm run build
+
+    - name: Deploy application (only on main or hotfix)
+      if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/hotfix/')
+      run: npm run deploy
+=======
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -31,4 +65,5 @@ jobs:
 
       - name: Deploy application
         run: echo "Deploying..."
+>>>>>>> 1e291ba61d31047d17b48d277d46a259bec06ccd
 
